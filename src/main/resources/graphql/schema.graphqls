@@ -26,5 +26,6 @@ type Query {
 type Mutation {
     addBook(title: String, pages: Int):Book
     addAuthorToBook(bookId:Int,authorId:Int):Book
+    deleteBook(bookId:Int):String
 
 }

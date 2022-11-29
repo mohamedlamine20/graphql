@@ -33,7 +33,7 @@ public class BookController {
 
     @QueryMapping
     public Book findOne(@Argument Integer id) {
-        return bookRepository.findById(id).get();
+        return bookRepository.findById(id).orElseThrow(() -> new RuntimeException());
     }
 
     @MutationMapping
@@ -47,5 +47,11 @@ public class BookController {
         Author author=authorRepository.findById(authorId).orElseThrow();
         book.setAuthor(author);
         return bookRepository.save(book);
+    }
+
+    @MutationMapping
+    public String deleteBook(@Argument Integer bookId){
+        bookRepository.deleteById(bookId);
+        return "deleted";
     }
 }
