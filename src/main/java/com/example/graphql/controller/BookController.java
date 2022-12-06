@@ -60,7 +60,7 @@ public class BookController {
 
     @MutationMapping
     public Book addAuthorToBook(@Argument Integer bookId ,@Argument  Integer authorId){
-        Book book = bookRepository.findById(bookId).orElseThrow();
+        Book book = bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException());
         Author author = authorRepository.findById(authorId).orElseThrow();
         book.setAuthor(author);
         return bookRepository.save(book);
