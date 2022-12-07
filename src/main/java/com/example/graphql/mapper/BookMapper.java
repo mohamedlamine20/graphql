@@ -2,6 +2,8 @@ package com.example.graphql.mapper;
 
 
 import com.example.graphql.BookTo;
+import com.example.graphql.DTO.AuthorTO;
+import com.example.graphql.model.Author;
 import com.example.graphql.model.Book;
 import org.mapstruct.Mapper;
 
@@ -16,6 +18,8 @@ public interface BookMapper  extends Serializable {
 
     BookTo to(Book book);
 
+
+    AuthorTO fromA (Author author);
 
 
 
