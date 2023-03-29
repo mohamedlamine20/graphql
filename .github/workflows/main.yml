@@ -21,4 +21,4 @@ jobs:
         run : |
           mvn clean 
           mvn -B package --file pom.xml
-          mvn compile jib:build
+          mvn compile jib:build -Djib.to.auth.username=dev19med -Djib.to.auth.password=Mohamed11
