@@ -1,0 +1,23 @@
+name: graphql
+on :
+  push :
+    branches:
+      -master
+jobs:
+  build-deploy:
+    name: build & deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: action/checkout@v3
+
+      - name: setup
+        uses: action/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version: 17
+
+      - name : build
+        run : |
+          mvn clean 
+          mvn -B package --file pom.xml
