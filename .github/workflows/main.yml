@@ -21,3 +21,4 @@ jobs:
         run : |
           mvn clean 
           mvn -B package --file pom.xml
+          mvn compile jib:build
