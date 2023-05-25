@@ -35,9 +35,7 @@ public class AuthorController {
         this.getAll().forEach(authorDTO ->
                 System.out.println(authorDTO.getBookSet()));
         System.out.println("+++++++++++++++++++++++++++++");
-        List<Author> authors = authorRepository.findAll();
-
-        return authors;
+        return authorRepository.findAll();
     }
 
 
@@ -45,8 +43,7 @@ public class AuthorController {
         CriteriaBuilder<Author> cb = cbf.create(entityManager, Author.class);
         CriteriaBuilder<AuthorDTO> bookDTOCriteriaBuilder =
                 evm.applySetting(EntityViewSetting.create(AuthorDTO.class), cb);
-        List<AuthorDTO> authorDTOS = bookDTOCriteriaBuilder.getResultList();
-        return authorDTOS;
+        return bookDTOCriteriaBuilder.getResultList();
 
     }
 

@@ -37,9 +37,6 @@ public class BlazePersistenceConfiguration {
     @Bean
     public EntityViewConfiguration entityViewConfiguration() {
         EntityViewConfiguration cfg = EntityViews.createDefaultConfiguration();
-        /**
-         * Entity View
-         */
         cfg.addEntityView(BookDTO.class);
         cfg.addEntityView(BookDTO.AuthorDTO.class);
         cfg.addEntityView(AuthorDTO.class);

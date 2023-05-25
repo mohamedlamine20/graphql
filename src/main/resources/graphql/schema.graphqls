@@ -22,10 +22,10 @@ type Query {
     allBooks: [Book]
     findOne(id: ID!): Book
     allAuthors: [Author]
+    allBooksOp:[Book]
 }
 type Mutation {
     addBook(title: String, pages: Int):Book
     addAuthorToBook(bookId:Int,authorId:Int):Book
     deleteBook(bookId:Int):String
-
 }

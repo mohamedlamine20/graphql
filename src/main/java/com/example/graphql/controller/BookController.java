@@ -41,16 +41,17 @@ public class BookController {
 
     @SchemaMapping(typeName = "Query", value = "allBooks")
     public List<Book> findAll() {
-        System.out.println("+++++++++++++++++++++++++++++");
-        this.getAll().forEach(bookDTO ->
-                System.out.println(bookDTO.getAuthor()));
-        System.out.println("+++++++++++++++++++++++++++++");
         return bookRepository.findAll();
+    }
+
+    @SchemaMapping(typeName = "Query", value = "allBooksOp")
+    public List<BookDTO> findAllOp() {
+        return getAll();
     }
 
     @QueryMapping
     public Book findOne(@Argument Integer id) {
-        return bookRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        return bookRepository.findById(id).orElseThrow(RuntimeException::new);
     }
 
     @MutationMapping
@@ -60,7 +61,7 @@ public class BookController {
 
     @MutationMapping
     public Book addAuthorToBook(@Argument Integer bookId ,@Argument  Integer authorId){
-        Book book = bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException());
+        Book book = bookRepository.findById(bookId).orElseThrow(RuntimeException::new);
         Author author = authorRepository.findById(authorId).orElseThrow();
         book.setAuthor(author);
         return bookRepository.save(book);
@@ -76,8 +77,7 @@ public class BookController {
         CriteriaBuilder<Book> cb = cbf.create(entityManager, Book.class);
         CriteriaBuilder<BookDTO> bookDTOCriteriaBuilder =
                 evm.applySetting(EntityViewSetting.create(BookDTO.class), cb);
-        List<BookDTO> bookDTOS = bookDTOCriteriaBuilder.getResultList();
-        return bookDTOS;
+        return bookDTOCriteriaBuilder.getResultList();
 
     }
 }

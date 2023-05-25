@@ -10,7 +10,7 @@ public enum Rating {
     TWO_STARS("⭐️⭐️"),
     ONE_STAR("⭐️");
 
-    private String star;
+    private final String star;
 
     Rating(String star) {
         this.star = star;
