@@ -38,7 +38,6 @@ public class Bootstrap implements CommandLineRunner {
         authors.add(new Author("Mark", "Heckler",null));
         authors.add(new Author ("Greg", "Rehnquist",  null));
         bookRepository.saveAll(books);
-
         authorRepository.saveAll(authors);
 
     }
