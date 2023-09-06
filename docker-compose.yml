@@ -1,21 +1,14 @@
 version: '3.1'
 services:
-#  app:
-#    container_name: springboot-postgresql
-#    image: springboot-postgresql
-#    build: ./
-#    ports:
-#      - "8080:8080"
-#    depends_on:
-#      - postgresqldb
   postgresqldb:
     image: postgres
+    container_name: graphql-db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
+      - POSTGRES_DB=testdb
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
-      - POSTGRES_DB=testdb
   app:
     build:
       dockerfile: Dockerfile
