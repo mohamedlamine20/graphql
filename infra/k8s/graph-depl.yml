@@ -13,7 +13,9 @@ spec:
     spec:
       containers:
         - name: graphql
-          image: mohamed/graphql-app
+          image: dev19med/graphql-image
+          ports:
+            - containerPort: 8080
 
 
 ---
