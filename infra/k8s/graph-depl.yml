@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: graphql
-          image: dev19med/graphql-image
+          image: dev19med/graphql
           ports:
             - containerPort: 8080
 
